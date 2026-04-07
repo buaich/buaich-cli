@@ -1,0 +1,22 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .: {}
+
+  packages/@bloom/cli:
+    dependencies:
+      '@bloom/cli-service':
+        specifier: workspace:*
+        version: link:../cli-service
+      '@bloom/cli-shared-utils':
+        specifier: workspace:*
+        version: link:../cli-shared-utils
+
+  packages/@bloom/cli-service: {}
+
+  packages/@bloom/cli-shared-utils: {}
