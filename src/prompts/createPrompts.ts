@@ -1,6 +1,7 @@
 import inquirer from "inquirer";
+import picocolors from "picocolors";
 
-export async function verify(name?: string): Promise<string> {
+export async function queryName(name?: string): Promise<string> {
   // 是否输入项目名
   let trimedName = (name ?? "").trim();
   if (trimedName) return trimedName;
@@ -10,8 +11,8 @@ export async function verify(name?: string): Promise<string> {
     {
       type: "input",
       name: "projectName",
-      message: "Enter your project name:",
-      default: "demo",
+      message: picocolors.gray("please enter the project name:"),
+      default: "my-project",
     },
   ]);
 
