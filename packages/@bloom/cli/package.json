@@ -2,17 +2,23 @@
   "name": "@bloom/cli",
   "version": "1.0.0",
   "type": "module",
-  "description": "",
-  "main": "index.js",
+  "description": "CLI for bloom's study!",
+  "bin": {
+    "bloom": "./bin/bloom.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "study",
+    "progress"
+  ],
+  "author": "bloom",
+  "license": "MIT",
   "packageManager": "pnpm@10.33.0",
   "dependencies": {
-    "@bloom/cli-service": "workspace:*",   
-    "@bloom/cli-shared-utils": "workspace:*"
+    "@bloom/cli-service": "workspace:*",
+    "@bloom/cli-shared-utils": "workspace:*",
+    "commander": "^12.1.0"
   }
 }

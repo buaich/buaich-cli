@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cli": "pnpm --filter @bloom/cli exec node bin/index.js"
+    "cli": "pnpm --filter @bloom/cli exec node bin/bloom.js"
   },
   "keywords": [],
   "author": "",
