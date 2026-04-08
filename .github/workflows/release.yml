@@ -8,7 +8,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
-  id-token: write # OIDC必需
+  id-token: write
 
 jobs:
   release:
@@ -29,7 +29,6 @@ jobs:
 
       - run: pnpm install
 
-      # 升级npm以支持OIDC
       - name: Upgrade npm
         run: npm install -g npm@latest
 
@@ -39,4 +38,4 @@ jobs:
           commit: "chore: update versions"
           title: "chore: update versions"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PR_TOKEN }}   # ← 修改这一行
