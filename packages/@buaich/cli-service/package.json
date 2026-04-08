@@ -1,8 +1,8 @@
 {
   "name": "@buaich/cli-service",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
-  "description": "Bloom CLI project generator service",
+  "description": "Buaich CLI project generator service",
   "exports": {
     ".": "./src/index.js"
   },

@@ -1,6 +1,6 @@
 {
   "name": "@buaich/cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "CLI for bloom's study!",
   "bin": {
@@ -27,8 +27,8 @@
   "license": "MIT",
   "packageManager": "pnpm@10.33.0",
   "dependencies": {
-    "@bloom/cli-service": "workspace:^",
-    "@bloom/cli-shared-utils": "workspace:^",
+    "@buaich/cli-service": "workspace:^",
+    "@buaich/cli-shared-utils": "workspace:^",
     "commander": "^12.1.0",
     "prompts": "^2.4.2"
   }
