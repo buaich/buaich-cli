@@ -1,10 +1,10 @@
 {
   "name": "@buaich/cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "description": "CLI for bloom's study!",
   "bin": {
-    "bloom": "./bin/bloom.js"
+    "buaich": "./bin/buaich.js"
   },
   "files": [
     "bin",
