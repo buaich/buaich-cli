@@ -1,0 +1,29 @@
+name: Release
+on:
+  push:
+    branches:
+      - main
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write # 使用OIDC认证
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+      - run: pnpm install
+      - uses: changesets/action@v1
+        with:
+          publish: pnpm ci:publish
+          commit: "chore: update versions"
+          title: "chore: update versions"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

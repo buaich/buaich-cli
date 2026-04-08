@@ -5,7 +5,8 @@
   "scripts": {
     "changeset": "changeset",
     "version": "changeset version",
-    "publish": "changeset publish"
+    "publish": "changeset publish",
+    "ci:publish": "pnpm publish -r --access public"
   },
   "devDependencies": {
     "@changesets/cli": "^2.30.0"
