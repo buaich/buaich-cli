@@ -1,6 +1,6 @@
 import prompts from "prompts";
-import { logError, logInfo } from "@bloom/cli-shared-utils";
-import { createProject } from "@bloom/cli-service";
+import { logError, logInfo } from "@buaich/cli-shared-utils";
+import { createProject } from "@buaich/cli-service";
 
 export async function registerCreateCommand(program) {
   program
