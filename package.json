@@ -1,17 +1,13 @@
 {
-  "name": "bloom-cli",
-  "version": "1.0.2",
-  "description": "",
-  "private": true,
-  "publishConfig": {
-   "access": "public"
-  },
-  "main": "index.js",
+  "name": "buaich-cli",
+  "private": true, //防止根包错误发布
+  "packageManager": "pnpm@10.33.0",
   "scripts": {
-    "cli": "pnpm --filter @bloom/cli exec node bin/bloom.js"
+    "changeset": "changeset",
+    "version": "changeset version",
+    "publish": "changeset publish"
   },
-  "keywords": [],
-  "author": "bloom",
-  "license": "MIT",
-  "packageManager": "pnpm@10.33.0"
+  "devDependencies": {
+    "@changesets/cli": "^2.30.0"
+  }
 }
