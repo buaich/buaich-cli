@@ -2,17 +2,26 @@
   "name": "@bloom/cli-service",
   "version": "1.0.0",
   "type": "module",
-  "description": "",
-  "main": "index.js",
+  "description": "Bloom CLI project generator service",
   "exports": {
     ".": "./src/index.js"
+  },
+  "files": [
+    "src",
+    "templates"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "bloom",
+  "license": "MIT",
   "packageManager": "pnpm@10.33.0",
   "dependencies": {
     "fs-extra": "^11.3.1"

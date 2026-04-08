@@ -6,12 +6,21 @@
   "exports": {
     ".": "./src/index.js"
   },
+  "files": [
+    "src"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "bloom",
+  "license": "MIT",
   "packageManager": "pnpm@10.33.0",
   "dependencies": {
     "chalk": "^5.3.0"

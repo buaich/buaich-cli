@@ -1,0 +1,4 @@
+templates/**/node_modules
+templates/**/.pnpm-store
+templates/**/dist
+templates/**/.cache

@@ -6,6 +6,16 @@
   "bin": {
     "bloom": "./bin/bloom.js"
   },
+  "files": [
+    "bin",
+    "commands"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,8 +27,8 @@
   "license": "MIT",
   "packageManager": "pnpm@10.33.0",
   "dependencies": {
-    "@bloom/cli-service": "workspace:*",
-    "@bloom/cli-shared-utils": "workspace:*",
+    "@bloom/cli-service": "workspace:^",
+    "@bloom/cli-shared-utils": "workspace:^",
     "commander": "^12.1.0",
     "prompts": "^2.4.2"
   }
