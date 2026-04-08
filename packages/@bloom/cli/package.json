@@ -1,5 +1,5 @@
 {
-  "name": "@bloom/cli",
+  "name": "@buaich/cli",
   "version": "1.0.0",
   "type": "module",
   "description": "CLI for bloom's study!",
