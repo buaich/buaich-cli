@@ -1,7 +1,10 @@
 {
   "name": "@buaich/cli-shared-utils",
   "version": "1.0.2",
-  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/buaich/buaich-cli"
+  },
   "type": "module",
   "exports": {
     ".": "./src/index.js"

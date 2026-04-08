@@ -2,6 +2,10 @@
   "name": "@buaich/cli-service",
   "version": "1.0.2",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/buaich/buaich-cli"
+  },
   "description": "Buaich CLI project generator service",
   "exports": {
     ".": "./src/index.js"

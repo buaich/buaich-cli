@@ -2,6 +2,10 @@
   "name": "@buaich/cli",
   "version": "1.0.3",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/buaich/buaich-cli"
+  },
   "description": "CLI for bloom's study!",
   "bin": {
     "buaich": "./bin/buaich.js"
