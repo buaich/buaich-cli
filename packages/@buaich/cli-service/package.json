@@ -1,6 +1,6 @@
 {
   "name": "@buaich/cli-service",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "description": "Buaich CLI project generator service",
   "exports": {
