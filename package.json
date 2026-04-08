@@ -1,6 +1,6 @@
 {
   "name": "buaich-cli",
-  "private": true, //防止根包错误发布
+  "private": true,
   "packageManager": "pnpm@10.33.0",
   "scripts": {
     "changeset": "changeset",
