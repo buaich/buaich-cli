@@ -32,11 +32,34 @@ export async function createProject({
     filter: (src) => !src.endsWith("node_modules") && !src.endsWith("dist"),
   });
 
+  await stripGeneratedTsNoCheck(targetDir);
+
   await patchPackageJson(targetDir, { projectName, template, deps });
 
   if (install) {
     const pkgManager = await detectPackageManager();
     await runInstall(targetDir, pkgManager);
+  }
+}
+
+async function stripGeneratedTsNoCheck(targetDir) {
+  const candidateFiles = [
+    path.join(targetDir, "vite.config.ts"),
+    path.join(targetDir, "webpack.config.ts"),
+  ];
+
+  await Promise.all(
+    candidateFiles.map((filePath) => stripLeadingTsNoCheck(filePath)),
+  );
+}
+
+async function stripLeadingTsNoCheck(filePath) {
+  if (!(await fs.pathExists(filePath))) return;
+
+  const raw = await fs.readFile(filePath, "utf8");
+  const normalized = raw.replace(/^\/\/\s*@ts-nocheck\s*\r?\n/, "");
+  if (normalized !== raw) {
+    await fs.writeFile(filePath, normalized, "utf8");
   }
 }
 
