@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "private": true,
+  "publishConfig": {
+   "access": "public"
+  },
   "main": "index.js",
   "scripts": {
     "cli": "pnpm --filter @bloom/cli exec node bin/bloom.js"
