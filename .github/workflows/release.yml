@@ -1,25 +1,38 @@
 name: Release
+
 on:
   push:
     branches:
       - main
+
 permissions:
   contents: write
   pull-requests: write
-  id-token: write # 使用OIDC认证
+  id-token: write # OIDC必需
+
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - uses: pnpm/action-setup@v4
         with:
           version: 10
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: "pnpm"
+
       - run: pnpm install
+
+      # 升级npm以支持OIDC
+      - name: Upgrade npm
+        run: npm install -g npm@latest
+
       - uses: changesets/action@v1
         with:
           publish: pnpm ci:publish
