@@ -1,7 +1,7 @@
 import chalk from "chalk";
 
 export function logInfo(msg) {
-  console.log(chalk.blue(msg));
+  console.log(chalk.greenBright(msg));
 }
 
 export function logError(err) {

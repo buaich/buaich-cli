@@ -19,6 +19,7 @@
   "dependencies": {
     "@bloom/cli-service": "workspace:*",
     "@bloom/cli-shared-utils": "workspace:*",
-    "commander": "^12.1.0"
+    "commander": "^12.1.0",
+    "prompts": "^2.4.2"
   }
 }
