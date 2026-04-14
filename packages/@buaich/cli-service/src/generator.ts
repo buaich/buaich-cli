@@ -5,8 +5,15 @@ import fs from "fs-extra";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
 const TEMPLATE_DIR = path.join(__dirname, "..", "templates");
+
+export type CreateProjectOptions = {
+  cwd: string;
+  projectName: string;
+  template: string;
+  deps?: string[];
+  install?: boolean;
+};
 
 export async function createProject({
   cwd,
@@ -14,7 +21,7 @@ export async function createProject({
   template,
   deps = [],
   install = true,
-}) {
+}: CreateProjectOptions): Promise<void> {
   if (!cwd) throw new Error("createProject: missing cwd");
   if (!projectName || !String(projectName).trim())
     throw new Error("createProject: projectName is required");
@@ -29,7 +36,8 @@ export async function createProject({
 
   await fs.ensureDir(targetDir);
   await fs.copy(templateDir, targetDir, {
-    filter: (src) => !src.endsWith("node_modules") && !src.endsWith("dist"),
+    filter: (src: string) =>
+      !src.endsWith("node_modules") && !src.endsWith("dist"),
   });
 
   await stripGeneratedTsNoCheck(targetDir);
@@ -42,7 +50,7 @@ export async function createProject({
   }
 }
 
-async function stripGeneratedTsNoCheck(targetDir) {
+async function stripGeneratedTsNoCheck(targetDir: string): Promise<void> {
   const candidateFiles = [
     path.join(targetDir, "vite.config.ts"),
     path.join(targetDir, "webpack.config.ts"),
@@ -53,7 +61,7 @@ async function stripGeneratedTsNoCheck(targetDir) {
   );
 }
 
-async function stripLeadingTsNoCheck(filePath) {
+async function stripLeadingTsNoCheck(filePath: string): Promise<void> {
   if (!(await fs.pathExists(filePath))) return;
 
   const raw = await fs.readFile(filePath, "utf8");
@@ -63,8 +71,8 @@ async function stripLeadingTsNoCheck(filePath) {
   }
 }
 
-function resolveTemplateDir(template) {
-  const mapping = {
+function resolveTemplateDir(template: string): string {
+  const mapping: Record<string, string> = {
     "vue-webpack5": path.join(TEMPLATE_DIR, "vue-webpack5"),
     "react-vite": path.join(TEMPLATE_DIR, "react-vite"),
   };
@@ -73,7 +81,16 @@ function resolveTemplateDir(template) {
   return dir;
 }
 
-async function patchPackageJson(targetDir, { projectName, template, deps }) {
+type PatchPackageJsonOptions = {
+  projectName: string;
+  template: string;
+  deps: string[];
+};
+
+async function patchPackageJson(
+  targetDir: string,
+  { projectName, template, deps }: PatchPackageJsonOptions,
+): Promise<void> {
   const pkgPath = path.join(targetDir, "package.json");
   const pkg = await fs.readJson(pkgPath);
 
@@ -93,28 +110,34 @@ async function patchPackageJson(targetDir, { projectName, template, deps }) {
   await fs.writeJson(pkgPath, pkg, { spaces: 2 });
 }
 
-function normalizeSelectedDeps(template, deps) {
+function normalizeSelectedDeps(_template: string, deps: string[]): string[] {
   const unique = new Set(
     (deps || []).map((d) => String(d).trim()).filter(Boolean),
   );
-
   return [...unique];
 }
 
-async function detectPackageManager() {
+async function detectPackageManager(): Promise<"pnpm" | "yarn" | "npm"> {
   const ua = process.env.npm_config_user_agent || "";
   if (ua.includes("pnpm")) return "pnpm";
   if (ua.includes("yarn")) return "yarn";
   return "npm";
 }
 
-async function runInstall(targetDir, pkgManager) {
+async function runInstall(
+  targetDir: string,
+  pkgManager: "pnpm" | "yarn" | "npm",
+): Promise<void> {
   const cmd = pkgManager;
   const args = pkgManager === "yarn" ? [] : ["install"];
   await spawnAsync(cmd, args, { cwd: targetDir });
 }
 
-function spawnAsync(command, args, options) {
+function spawnAsync(
+  command: string,
+  args: string[],
+  options: { cwd: string },
+): Promise<void> {
   return new Promise((resolve, reject) => {
     const child = spawn(command, args, {
       stdio: "inherit",

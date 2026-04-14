@@ -1,3 +1,4 @@
 packages:
   - "packages/@buaich/*" # packages/@buaich/目录下的所有直接子目录作为工作区的包
-  - "!**/templates/**" #排除所有路径中包含templates/目录的内容
+allowBuilds:
+  esbuild: true

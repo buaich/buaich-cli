@@ -4,36 +4,36 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/buaich/buaich-cli"
+    "url": "https://github.com/buaich/buaich-cli",
+    "directory": "packages/@buaich/cli"
   },
-  "description": "CLI for bloom's study!",
   "bin": {
-    "buaich": "./bin/buaich.js"
+    "buaich": "./dist/index.js"
   },
   "files": [
-    "bin",
-    "commands"
+    "dist"
   ],
-  "engines": {
-    "node": ">=18"
-  },
   "publishConfig": {
     "access": "public"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "study",
-    "progress"
-  ],
-  "author": "bloom",
-  "license": "MIT",
   "packageManager": "pnpm@10.33.0",
   "dependencies": {
-    "@buaich/cli-service": "^1.0.2",
-    "@buaich/cli-shared-utils": "^1.0.2",
+    "@buaich/cli-service": "workspace:*",
+    "@buaich/cli-shared-utils": "workspace:*",
     "commander": "^12.1.0",
     "prompts": "^2.4.2"
-  }
+  },
+  "devDependencies": {
+    "@types/prompts": "^2.4.9",
+    "tsup": "^8.5.0",
+    "typescript": "^6.0.2"
+  },
+  "scripts": {
+    "build": "tsup",
+    "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
+    "prepublishOnly": "pnpm run build"
+  },
+  "author": "buaich",
+  "license": "MIT",
+  "description": "Creating Web project rapidly!"
 }
