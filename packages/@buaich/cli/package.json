@@ -8,7 +8,7 @@
     "directory": "packages/@buaich/cli"
   },
   "bin": {
-    "buaich": "./dist/index.js"
+    "buaich": "./dist/buaich.js"
   },
   "files": [
     "dist"
