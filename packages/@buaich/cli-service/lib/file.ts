@@ -60,7 +60,12 @@ export async function copy(
   }
 
   await fs.copy(templateDir, targetDir, {
-    filter: (sourcePath) =>
-      !sourcePath.includes("node_modules") && !sourcePath.includes("dist"),
+    filter: (sourcePath) => {
+      const relPath = path.relative(templateDir, sourcePath);
+      const segments = relPath.split(path.sep);
+      return !segments.some(
+        (segment) => segment === "node_modules" || segment === "dist",
+      );
+    },
   });
 }

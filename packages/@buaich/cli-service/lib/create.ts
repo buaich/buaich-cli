@@ -74,6 +74,12 @@ export async function create(createInfo: CreateInfo): Promise<void> {
     let templateDir = getTemplateDir(options.template);
 
     await copy(templateDir, targetDir);
+    const pkgPath = path.join(targetDir, "package.json");
+    if (!(await fs.pathExists(pkgPath))) {
+      throw new Error(
+        "Template copy failed: package.json not found in target directory.",
+      );
+    }
     if (options.skip) return; //skipping to install dependencies
 
     const deps = options.deps ?? [];
