@@ -1,5 +1,14 @@
 # @buaich/cli
 
+## 2.0.1
+
+### Patch Changes
+
+- 63f8fbe: rebuild all function or method
+- Updated dependencies [63f8fbe]
+  - @buaich/cli-shared-utils@2.0.1
+  - @buaich/cli-service@2.0.1
+
 ## 2.0.0
 
 ### Major Changes
