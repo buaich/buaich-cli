@@ -1,7 +1,7 @@
 import { defineConfig } from "tsup";
 
 export default defineConfig({
-  entry: ["src/bin/index.ts"],
+  entry: ["./bin/buaich.ts"],
   outDir: "dist",
   format: ["esm"],
   target: "node18",

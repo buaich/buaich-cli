@@ -11,7 +11,12 @@
     "changeset": "changeset",
     "version": "changeset version",
     "publish": "changeset publish",
-    "ci:publish": "pnpm -r publish --provenance --access public"
+    "ci:publish": "pnpm -r publish --provenance --access public",
+    "build:all": "pnpm -r --filter \"./packages/@buaich/*\" run build",
+    "rebuild:all": "pnpm -r --filter \"./packages/@buaich/*\" run clean && pnpm -r --filter \"./packages/@buaich/*\" run build",
+    "install:cli": "pnpm --filter \"./packages/@buaich/cli\" add",
+    "install:service": "pnpm --filter \"./packages/@buaich/cli-service\" add",
+    "install:utils": "pnpm --filter \"./packages/@buaich/cli-shared-utils\" add"
   },
   "devDependencies": {
     "@changesets/cli": "^2.30.0",

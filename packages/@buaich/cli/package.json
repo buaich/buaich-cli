@@ -20,8 +20,7 @@
   "dependencies": {
     "@buaich/cli-service": "workspace:*",
     "@buaich/cli-shared-utils": "workspace:*",
-    "commander": "^12.1.0",
-    "prompts": "^2.4.2"
+    "commander": "^12.1.0"
   },
   "devDependencies": {
     "@types/prompts": "^2.4.9",

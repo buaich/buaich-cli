@@ -1,12 +1,18 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "target": "ES2022",
-    "lib": ["ES2022"],
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "ignoreDeprecations": "6.0",
+    "baseUrl": ".",
+    "paths": {
+      "@buaich/cli": ["packages/@buaich/cli/bin/buaich.ts"],
+      "@buaich/cli-service": ["packages/@buaich/cli-service/index.ts"],
+      "@buaich/cli-shared-utils": ["packages/@buaich/cli-shared-utils/index.ts"]
+    },
     "strict": true,
+    "target": "es2015",
+    "lib": ["ES2015"],
+    "module": "es2015",
+    "moduleResolution": "node",
+    "ignoreDeprecations": "6.0",
     "skipLibCheck": true,
     "types": ["node"],
 

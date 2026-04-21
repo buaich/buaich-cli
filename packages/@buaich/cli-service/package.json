@@ -25,6 +25,8 @@
   "license": "MIT",
   "packageManager": "pnpm@10.33.0",
   "dependencies": {
+    "@buaich/cli-shared-utils": "workspace: *",
+    "execa": "^9.6.1",
     "fs-extra": "^11.3.1"
   },
   "devDependencies": {
