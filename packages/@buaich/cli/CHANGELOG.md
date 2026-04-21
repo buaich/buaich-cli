@@ -1,5 +1,11 @@
 # @buaich/cli
 
+## 2.0.2
+
+### Patch Changes
+
+- ee57d26: fix bin entry
+
 ## 2.0.1
 
 ### Patch Changes
