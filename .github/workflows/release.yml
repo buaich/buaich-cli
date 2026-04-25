@@ -56,7 +56,6 @@ jobs:
 
       - name: Resolve @buaich/cli published version
         id: cli_release
-        if: steps.changesets.outputs.published == 'true'
         env:
           PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
         run: |
