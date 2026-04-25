@@ -1,5 +1,11 @@
 # @buaich/cli-shared-utils
 
+## 2.0.2
+
+### Patch Changes
+
+- 798f0da: replenish release
+
 ## 2.0.1
 
 ### Patch Changes
