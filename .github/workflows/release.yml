@@ -14,11 +14,11 @@ concurrency:
 permissions:
   contents: write #allow amend depot code
   pull-requests: write #allow create or amend PR
-  id-token: write #allow get OIDC JWT
 
 jobs:
   release:
     runs-on: ubuntu-latest
+    environment: npm-release
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -41,16 +41,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Debug trusted publisher context
-        run: |
-          echo "repository=${{ github.repository }}"
-          echo "workflow=${{ github.workflow }}"
-          echo "workflow_ref=${{ github.workflow_ref }}"
-          echo "workflow_sha=${{ github.workflow_sha }}"
-          echo "ref=${{ github.ref }}"
-          echo "ref_name=${{ github.ref_name }}"
-          echo "event_name=${{ github.event_name }}"
-
       - name: Run changesets action
         id: changesets
         uses: changesets/action@v1
@@ -61,6 +51,8 @@ jobs:
           createGithubReleases: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Resolve @buaich/cli published version
         id: cli_release
