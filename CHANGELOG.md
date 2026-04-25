@@ -1,5 +1,11 @@
 # @buaich/cli-service
 
+## 2.0.2
+
+### Patch Changes
+
+- d35b28d: fix the error that package.json can't find
+
 ## 2.0.1
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # @buaich/cli
 
+## 2.0.3
+
+### Patch Changes
+
+- Updated dependencies [d35b28d]
+  - @buaich/cli-service@2.0.2
+
 ## 2.0.2
 
 ### Patch Changes
