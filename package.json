@@ -9,8 +9,6 @@
   },
   "scripts": {
     "changeset": "changeset",
-    "version": "changeset version",
-    "publish": "changeset publish",
     "ci:publish": "pnpm -r publish --provenance --access public",
     "build:all": "pnpm -r --filter \"./packages/@buaich/*\" run build",
     "rebuild:all": "pnpm -r --filter \"./packages/@buaich/*\" run clean && pnpm -r --filter \"./packages/@buaich/*\" run build",

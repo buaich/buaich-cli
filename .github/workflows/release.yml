@@ -1,41 +1,51 @@
-name: Release
+name: Release #workflow name
 
+# trigger condition
 on:
   push:
     branches:
-      - main
+      - main #When codes are pushed into main branch
+
+# prevent from concurrency
+concurrency:
+  group: ${{github.workflow}}-${{github.ref}}
+  cancel-in-progress: true
 
 permissions:
-  contents: write
-  pull-requests: write
-  id-token: write
+  contents: write #allow amend depot code
+  pull-requests: write #allow create or amend PR
+  id-token: write #allow get OIDC JWT
 
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{secrets.GITHUB_TOKEN}}
 
-      - uses: pnpm/action-setup@v4
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
         with:
           version: 10.33.0
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: "pnpm"
+          registry-url: "https://registry.npmjs.org"
 
-      - run: pnpm install
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-      - name: Upgrade npm
-        run: npm install -g npm@latest
-
-      - uses: changesets/action@v1
+      - name: Run changesets action
+        uses: changesets/action@v1
         with:
           publish: pnpm ci:publish
           commit: "chore: update versions"
           title: "chore: update versions"
         env:
-          GITHUB_TOKEN: ${{ secrets.PR_TOKEN }}   # ← 修改这一行
+          GITHUB_TOKEN: ${{ secrets.PR_TOKEN }}
