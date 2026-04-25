@@ -1,5 +1,12 @@
 # @buaich/cli
 
+## 2.0.7
+
+### Patch Changes
+
+- 72de87c: test
+- 1d57224: test
+
 ## 2.0.6
 
 ### Patch Changes
