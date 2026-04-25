@@ -1,5 +1,11 @@
 # @buaich/cli
 
+## 2.0.6
+
+### Patch Changes
+
+- d122f40: test
+
 ## 2.0.5
 
 ### Patch Changes
