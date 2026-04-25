@@ -41,11 +41,19 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Get main son package version
+        id: get_version
+        run: |
+          VERSION=$(node -p "require('./packages/@buaich/cli/package.json').version")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
       - name: Run changesets action
         uses: changesets/action@v1
         with:
           publish: pnpm ci:publish
           commit: "chore: update versions"
           title: "chore: update versions"
+          createGithubReleases: aggregate
+          githubReleaseName: "v${{steps.get_version.outputs.version}}"
         env:
           GITHUB_TOKEN: ${{ secrets.PR_TOKEN }}
