@@ -1,0 +1,5 @@
+---
+"@buaich/cli": patch
+---
+
+test

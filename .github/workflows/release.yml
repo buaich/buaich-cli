@@ -57,7 +57,7 @@ jobs:
       - name: Resolve @buaich/cli release version
         id: cli_release
         run: |
-          node -e "const fs=require('node:fs'); const pkg=JSON.parse(fs.readFileSync('packages/@buaich/cli/package.json','utf8')); if(!pkg.version){throw new Error('Missing version in packages/@buaich/cli/package.json');} fs.appendFileSync(process.env.GITHUB_OUTPUT, `version=${pkg.version}\n`);"
+          node -e 'const fs=require("node:fs"); const pkg=JSON.parse(fs.readFileSync("packages/@buaich/cli/package.json","utf8")); if(!pkg.version){throw new Error("Missing version in packages/@buaich/cli/package.json");} fs.appendFileSync(process.env.GITHUB_OUTPUT, "version="+pkg.version+"\n");'
 
       - name: Create GitHub release for @buaich/cli
         uses: softprops/action-gh-release@v2

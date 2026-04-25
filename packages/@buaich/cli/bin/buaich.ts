@@ -2,6 +2,7 @@ import pkg from "../package.json";
 import { Command } from "commander";
 import { create } from "@buaich/cli-service";
 
+// create program
 const program = new Command();
 program.version(`@buaich/cli ${pkg.version}`); //cli version info
 
