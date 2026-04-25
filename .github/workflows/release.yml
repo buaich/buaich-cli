@@ -70,3 +70,4 @@ jobs:
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.PR_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
