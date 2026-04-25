@@ -50,7 +50,7 @@ jobs:
           title: "chore: update versions"
           createGithubReleases: false
         env:
-          GITHUB_TOKEN: ${{ secrets.PR_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Resolve @buaich/cli published version
         id: cli_release
@@ -69,4 +69,4 @@ jobs:
           target_commitish: ${{ github.sha }}
           generate_release_notes: true
         env:
-          GITHUB_TOKEN: ${{ secrets.PR_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
