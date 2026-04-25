@@ -54,15 +54,12 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Resolve @buaich/cli published version
+      - name: Resolve @buaich/cli release version
         id: cli_release
-        env:
-          PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
         run: |
-          node -e "const fs=require('node:fs'); const packages=JSON.parse(process.env.PUBLISHED_PACKAGES || '[]'); const cli=packages.find((pkg)=>pkg.name==='@buaich/cli'); if(!cli){fs.appendFileSync(process.env.GITHUB_OUTPUT, 'should_release=false\n'); process.exit(0);} fs.appendFileSync(process.env.GITHUB_OUTPUT, 'should_release=true\n'); fs.appendFileSync(process.env.GITHUB_OUTPUT, `version=${cli.version}\n`);"
+          node -e "const fs=require('node:fs'); const pkg=JSON.parse(fs.readFileSync('packages/@buaich/cli/package.json','utf8')); if(!pkg.version){throw new Error('Missing version in packages/@buaich/cli/package.json');} fs.appendFileSync(process.env.GITHUB_OUTPUT, `version=${pkg.version}\n`);"
 
       - name: Create GitHub release for @buaich/cli
-        if: steps.cli_release.outputs.should_release == 'true'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ steps.cli_release.outputs.version }}
