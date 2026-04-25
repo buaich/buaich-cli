@@ -10,5 +10,5 @@
     "esModuleInterop": true,
     "useDefineForClassFields": true
   },
-  "include": ["src", "webpack.config.ts"]
+  "include": ["src"]
 }

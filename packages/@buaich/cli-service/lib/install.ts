@@ -102,7 +102,7 @@ export async function installDeps(
       }
     }
 
-    console.log(chalk.green(`\n✅ All specific dependencies installed:`));
+    console.log(chalk.green(`\n😀 All specific dependencies installed:`));
     deps.forEach((dep) => {
       console.log(`${chalk.green("✔")} ${chalk.blue(dep)}`);
     });

@@ -80,6 +80,25 @@ export async function create(createInfo: CreateInfo): Promise<void> {
         "Template copy failed: package.json not found in target directory.",
       );
     }
+
+    const pkg = await fs.readJson(pkgPath);
+    pkg.name = appName;
+    await fs.writeJson(pkgPath, pkg, { spaces: 2 });
+
+    if (path.basename(templateDir) === Template.Vue) {
+      const webpackConfigPath = path.join(targetDir, "webpack.config.ts");
+      if (await fs.pathExists(webpackConfigPath)) {
+        const webpackConfig = await fs.readFile(webpackConfigPath, "utf8");
+        const cleanedWebpackConfig = webpackConfig.replace(
+          /^\/\/ @ts-nocheck\r?\n/,
+          "",
+        );
+        if (cleanedWebpackConfig !== webpackConfig) {
+          await fs.writeFile(webpackConfigPath, cleanedWebpackConfig, "utf8");
+        }
+      }
+    }
+
     if (options.skip) return; //skipping to install dependencies
 
     const deps = options.deps ?? [];
